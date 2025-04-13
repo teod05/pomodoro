@@ -78,7 +78,7 @@ function App() {
         <div className="todo-list">
           {items.map((item) => {
             const {_id, name} = item
-            return <TodoItem name={name} id={_id} deleteTodo={deleteTodo}/>
+            return <TodoItem name={name} id={_id} deleteTodo={deleteTodo} refreshTodos={getTodos}/>
           })}
         </div>
       </div>
