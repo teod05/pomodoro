@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import TodoItem from './TodoItem';
 
+
+const API_Base = 'http://localhost:3000/todo'
+
+// implement edit as well
 function App() {
   return (
     <div className="app-container">
       <div className="todo-container">
-        <h1 className="app-title">My Tasks</h1>
+        <h1 className="app-title">TO DO LIST</h1>
         <div className="input-group">
           <input
             type="text"
