@@ -37,6 +37,21 @@ function App() {
     setInput('')
   }
 
+  const deleteTodo = async(id) => {
+    try{
+        const response = await fetch (API_Base + '/delete/' + id, {
+            method: 'DELETE'
+        })
+        if(!response.ok){
+            throw new Error("Failed to delete a task")
+        }
+        const data = await response.json()
+        setItem(items => items.filter(item=> item._id !== data._id))
+    }catch(error){
+        console.error("Error updating task status", error)
+    }
+}
+
   const getTodos = () => {
     fetch(API_Base)
     .then(res => res.json())
@@ -63,7 +78,7 @@ function App() {
         <div className="todo-list">
           {items.map((item) => {
             const {_id, name} = item
-            return <TodoItem name={name} id={_id}/>
+            return <TodoItem name={name} id={_id} deleteTodo={deleteTodo}/>
           })}
         </div>
       </div>
