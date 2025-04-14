@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import TodoItem from './TodoItem';
-
+import Pomo from './Pomo';
 
 const API_Base = 'http://localhost:3000/todo'
 
-
-
 // implement edit as well
 function App() {
-
+  
   const [items, setItem] = useState([])
   const [input, setInput] = useState("")
 
@@ -60,6 +58,8 @@ function App() {
   }
 
   return (
+    <div>
+      <Pomo />
     <div className="app-container">
       <div className="todo-container">
         <h1 className="app-title">TO DO LIST</h1>
@@ -82,6 +82,7 @@ function App() {
           })}
         </div>
       </div>
+    </div>
     </div>
   );
 }

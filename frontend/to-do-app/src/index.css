@@ -199,3 +199,112 @@ body {
   border-radius: 8px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+
+/* Pomodoro Timer Styles */
+.pomodoro-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.pomodoro-container h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #3182ce;
+    margin-bottom: 1rem;
+}
+
+.pomodoro-container h2.work-mode {
+    color: #3182ce;
+}
+
+.pomodoro-container h2.break-mode {
+    color: #38a169;
+}
+
+.timer-display {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+    color: #2d3748;
+    font-family: 'Poppins', sans-serif;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.timer-controls button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #3182ce;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.timer-controls button:hover:not(:disabled) {
+    background-color: #2c5282;
+    transform: translateY(-2px);
+}
+
+.timer-controls button:disabled {
+    background-color: #e2e8f0;
+    color: #a0aec0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.timer-settings {
+    margin-top: 2rem;
+    text-align: left;
+    background-color: #f7fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.setting {
+    margin-bottom: 1.5rem;
+}
+
+.setting:last-child {
+    margin-bottom: 0;
+}
+
+.setting label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.setting input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.setting input:focus {
+    border-color: #3182ce;
+}
+
+.setting input:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    border-color: #e2e8f0;
+}
