@@ -1,17 +1,19 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import TodoItem from './TodoItem';
 import Pomo from './Pomo';
+import About from './About';
+import WhyPomodoro from './WhyPomodoro';
 
 const API_Base = 'http://localhost:3000/todo'
 
-// implement edit as well
-function App() {
-  
+function Main() {
   const [items, setItem] = useState([])
   const [input, setInput] = useState("")
 
-  useEffect( () => {
-    getTodos()}, [])
+  useEffect(() => {
+    getTodos()
+  }, [])
 
   function HandleInput(event){
     setInput(event.target.value)
@@ -30,7 +32,7 @@ function App() {
     body: JSON.stringify({
       name: input,
     })
-  }).then(res => res.json()) //gets the data again I think
+  }).then(res => res.json())
     await getTodos()
     setInput('')
   }
@@ -48,7 +50,7 @@ function App() {
     }catch(error){
         console.error("Error updating task status", error)
     }
-}
+  }
 
   const getTodos = () => {
     fetch(API_Base)
@@ -58,9 +60,8 @@ function App() {
   }
 
   return (
-    <div>
-      <Pomo />
     <div className="app-container">
+      <Pomo />
       <div className="todo-container">
         <h1 className="app-title">TO DO LIST</h1>
         <div className="input-group">
@@ -83,7 +84,29 @@ function App() {
         </div>
       </div>
     </div>
-    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <header className="app-header">
+          <nav>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/why-pomodoro" className="nav-link">Why Pomodoro Works</Link>
+            <Link to="/about" className="nav-link">About</Link>
+          </nav>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/why-pomodoro" element={<WhyPomodoro />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
