@@ -5,20 +5,25 @@ import Pomo from './Pomo';
 import About from './About';
 import WhyPomodoro from './WhyPomodoro';
 
+// API pagrindinis URL
 const API_Base = 'http://localhost:3000/todo'
 
+// Pagrindinis komponentas su užduočių sąrašu
 function Main() {
   const [items, setItem] = useState([])
   const [input, setInput] = useState("")
 
+  // Gauti užduotis iš serverio
   useEffect(() => {
     getTodos()
   }, [])
 
+  // Apdoroti įvesties lauko pakeitimus
   function HandleInput(event){
     setInput(event.target.value)
   }
 
+  // Pridėti naują užduotį
   const addItem = async() => {
     if (!input.trim()){
       alert("Please enter a task!")
@@ -37,13 +42,14 @@ function Main() {
     setInput('')
   }
 
+  // Ištrinti užduotį
   const deleteTodo = async(id) => {
     try{
         const response = await fetch (API_Base + '/delete/' + id, {
             method: 'DELETE'
         })
         if(!response.ok){
-            throw new Error("Failed to delete a task")
+            throw new Error("Failed to delete task")
         }
         const data = await response.json()
         setItem(items => items.filter(item=> item._id !== data._id))
@@ -52,6 +58,7 @@ function Main() {
     }
   }
 
+  // Gauti visas užduotis
   const getTodos = () => {
     fetch(API_Base)
     .then(res => res.json())
@@ -87,6 +94,7 @@ function Main() {
   );
 }
 
+// Pagrindinis aplikacijos komponentas su navigacija
 function App() {
   return (
     <Router>

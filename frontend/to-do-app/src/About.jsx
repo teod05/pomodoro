@@ -22,9 +22,16 @@ function About() {
                 </section>
 
                 <section>
+                    <h2>Disclaimer</h2>
+                    <p>This a public to-do list app. Any data you add can be seen by other users. Inappropriate content is strictly prohibited.</p>
+                </section>
+
+                <section>
                     <h2>Version</h2>
                     <p>Current Version: 1.0.0</p>
                 </section>
+
+               
             </div>
         </div>
     );
